@@ -5,11 +5,8 @@ var app = express();
 app.use( bodyparser.urlencoded( {extended : false} ) );
 
 app.post('/form', function( req,res ){
-
-
-
-	console.log( req );
-
+	var str = req.body.str;
+	res.end( str.toString().split('').reverse().join('') );
 
 });
 
