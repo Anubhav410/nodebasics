@@ -117,7 +117,7 @@ app.post( "/portfolio/addTrade" , connectDB  ,function( req , res ){
 
 	console.log('Adding trade');
 
-	if( req.body.stockId ==  undefined || req.body.quantity == undefined || req.body.price ==  undefined || req.body.type == undefined || req.body.date == undefined  ){
+	if( req.body.stockName ==  undefined || req.body.quantity == undefined || req.body.price ==  undefined || req.body.type == undefined || req.body.date == undefined  ){
 		res.end('Bad params');
 	}
 
