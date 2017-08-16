@@ -56,7 +56,7 @@ mongo.MongoClient.connect(  mongoClientUrl , function(err , db){
 										stockName : 'hdfcbank' ,
 										type 	  : 'buy',
 										quantity  : '200',
-										price     : '100',
+										price     : '1000',
 										date      : '2015-05-11'
 									   },
 									   { 

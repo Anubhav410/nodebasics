@@ -87,9 +87,27 @@ app.get('/portfolio/holdings' , connectDB ,function( req, res ){
   	});
 });
 
+/*  
+	Formulae : {P(current) / P(initial)} - 1
+	Source : https://www.fool.com/knowledge-center/annualized-return-vs-cumulative-return.aspx
+	Assumtion : P(current) = 100
+ */
+
 app.get('/portfolio/returns' , connectDB ,function( req, res ){
+	var db = req.db;
+	db.collection("trades").find().toArray().then( function( tradeInfo ){
+		var allTrades = sortTrades( tradeInfo );
+		var result = {};
+		for( let key in allTrades ){
+			var trades = allTrades[key];
+			pCurrent = 100;
+			pInitial = parseInt(trades[0]['price']);
+			console.log("Ini : " + pInitial + " , pCurr : " + pCurrent);
+			result[key] = (pCurrent/pInitial) - 1;
+		}
 
-
+		res.end( JSON.stringify(result) );
+	})
 });
 
 
